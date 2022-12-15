@@ -23,6 +23,14 @@ namespace WebCafe.Controllers
         [HttpPost]
         public ActionResult ThemMoiDonHang(string infoThanhToan, string typeThanhToan, string ipMa,string ipHoTen,string ipDiaChi,string ipDienThoai,string ipEmail)
         {
+            if(infoThanhToan == null)
+            {
+                TempData["Error"] = "Bạn chưa chọn thông tin thanh toán!!";
+            }
+            if(typeThanhToan == null)
+            {
+                TempData["Error"] = "Bạn chưa chọn hình thức thanh toán!!";
+            }
             //Xử lý thông tin khách hàng
             KhachHang khachHang = new KhachHang();
             khachHang.DiaChi = ipDiaChi;

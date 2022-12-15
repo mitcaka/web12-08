@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLCaPheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuanLyCaPheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="TaiKhoan" />
@@ -61,7 +61,7 @@
             <PropertyRef Name="MaGiamGia" />
           </Key>
           <Property Name="MaGiamGia" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TenMa" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenMa" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="active" Type="bit" />
           <Property Name="GiaTri" Type="float" />
         </EntityType>
@@ -71,7 +71,7 @@
           </Key>
           <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="50" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
@@ -149,7 +149,7 @@
           <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -160,7 +160,7 @@
           <Property Name="MaTin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TieuDe" Type="nvarchar" MaxLength="50" />
           <Property Name="NgayViet" Type="datetime" />
-          <Property Name="NoiDung" Type="text" />
+          <Property Name="NoiDung" Type="ntext" />
           <Property Name="Url-friendly" Type="nvarchar" MaxLength="50" />
           <Property Name="MaDanhMuc" Type="int" />
           <Property Name="HinhAnh" Type="text" />
@@ -285,7 +285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLCaPheModelStoreContainer">
+        <EntityContainer Name="QuanLyCaPheModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
@@ -346,7 +346,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLCaPheModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QuanLyCaPheModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="TaiKhoan" />
@@ -411,7 +411,7 @@
             <PropertyRef Name="MaGiamGia" />
           </Key>
           <Property Name="MaGiamGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenMa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenMa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="active" Type="Boolean" />
           <Property Name="GiaTri" Type="Double" />
           <NavigationProperty Name="DonDatHangs" Relationship="Self.FK_DonDatHang_GiamGia" FromRole="GiamGia" ToRole="DonDatHang" />
@@ -422,7 +422,7 @@
           </Key>
           <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -509,7 +509,7 @@
           <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_ThanhVien" FromRole="ThanhVien" ToRole="KhachHang" />
@@ -521,7 +521,7 @@
           <Property Name="MaTin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TieuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayViet" Type="DateTime" Precision="3" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Url_friendly" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaDanhMuc" Type="Int32" />
           <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -709,9 +709,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLCaPheModelStoreContainer" CdmEntityContainer="QuanLyCaPheEntities">
+        <EntityContainerMapping StorageEntityContainer="QuanLyCaPheModelStoreContainer" CdmEntityContainer="QuanLyCaPheEntities">
           <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="QLCaPheModel.Admin">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -723,7 +723,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietDonHangs">
-            <EntityTypeMapping TypeName="QLCaPheModel.ChiTietDonHang">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
                 <ScalarProperty Name="MaCTDH" ColumnName="MaCTDH" />
                 <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
@@ -734,7 +734,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietPhieuNhaps">
-            <EntityTypeMapping TypeName="QLCaPheModel.ChiTietPhieuNhap">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.ChiTietPhieuNhap">
               <MappingFragment StoreEntitySet="ChiTietPhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -745,7 +745,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhMucs">
-            <EntityTypeMapping TypeName="QLCaPheModel.DanhMuc">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.DanhMuc">
               <MappingFragment StoreEntitySet="DanhMuc">
                 <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
@@ -754,7 +754,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonDatHangs">
-            <EntityTypeMapping TypeName="QLCaPheModel.DonDatHang">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
                 <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
                 <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
@@ -767,7 +767,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiamGias">
-            <EntityTypeMapping TypeName="QLCaPheModel.GiamGia">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.GiamGia">
               <MappingFragment StoreEntitySet="GiamGia">
                 <ScalarProperty Name="MaGiamGia" ColumnName="MaGiamGia" />
                 <ScalarProperty Name="TenMa" ColumnName="TenMa" />
@@ -777,7 +777,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QLCaPheModel.KhachHang">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -789,7 +789,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiSanPhams">
-            <EntityTypeMapping TypeName="QLCaPheModel.LoaiSanPham">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -799,7 +799,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaCungCaps">
-            <EntityTypeMapping TypeName="QLCaPheModel.NhaCungCap">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
                 <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
@@ -811,7 +811,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhieuNhaps">
-            <EntityTypeMapping TypeName="QLCaPheModel.PhieuNhap">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.PhieuNhap">
               <MappingFragment StoreEntitySet="PhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
@@ -821,7 +821,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="QLCaPheModel.SanPham">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
@@ -841,7 +841,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StaticDatas">
-            <EntityTypeMapping TypeName="QLCaPheModel.StaticData">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.StaticData">
               <MappingFragment StoreEntitySet="StaticData">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="key" ColumnName="key" />
@@ -850,7 +850,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QLCaPheModel.sysdiagram">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -861,7 +861,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThanhViens">
-            <EntityTypeMapping TypeName="QLCaPheModel.ThanhVien">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.ThanhVien">
               <MappingFragment StoreEntitySet="ThanhVien">
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -873,7 +873,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TinTucs">
-            <EntityTypeMapping TypeName="QLCaPheModel.TinTuc">
+            <EntityTypeMapping TypeName="QuanLyCaPheModel.TinTuc">
               <MappingFragment StoreEntitySet="TinTuc">
                 <ScalarProperty Name="MaTin" ColumnName="MaTin" />
                 <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />

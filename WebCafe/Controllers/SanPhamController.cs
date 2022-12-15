@@ -13,7 +13,7 @@ namespace WebCafe.Controllers
         // GET: SanPham
         QuanLyCaPheEntities db = new QuanLyCaPheEntities();
 
-        public ActionResult Index(string sortColumn ="",int page =1)
+        public ActionResult Index(string search = "",string sortColumn ="",int page =1)
         {
             //View All
             List<WebCafe.Models.SanPham> SanPhams = db.SanPhams.Where(x => x.DaXoa == true).ToList();
@@ -57,6 +57,20 @@ namespace WebCafe.Controllers
             {
                 SanPhams = db.SanPhams.OrderByDescending(row => row.DonGia).ToList();
                 shopModel.listSanPham = SanPhams;
+            }else if(sortColumn == "new")
+            {
+                SanPhams = db.SanPhams.OrderByDescending(row => row.NgayCapNhat).ToList();
+                shopModel.listSanPham = SanPhams;
+            }else if(sortColumn == "TopSale")
+            {
+                SanPhams = db.SanPhams.OrderByDescending(row => row.LuotMua).ToList();
+                shopModel.listSanPham = SanPhams;
+            }
+            //search
+            if(search != "")
+            {
+                SanPhams = db.SanPhams.Where(row => row.TenSP.Contains(search)).ToList();
+                shopModel.listSanPham = SanPhams;
             }
 
             //Paging
@@ -78,7 +92,8 @@ namespace WebCafe.Controllers
             ViewBag.LoaiSanPham = db.LoaiSanPhams.ToList();
             var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
             ViewBag.FormatTien = String.Format(info, "{0:0,0 vnđ}", sp.DonGia);
-            int i = 1;
+            List<SanPham> sanPhamNoiBat = db.SanPhams.OrderByDescending(row => row.LuotMua).Where(x => x.DaXoa == true).Take(5).ToList();
+            ViewBag.SanPhamNoiBat = sanPhamNoiBat;
             return View(sp);
         }
     }

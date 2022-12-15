@@ -697,6 +697,12 @@
     <Content Include="Areas\Admin\Views\QLDonHang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QLNhapHang\TaoPhieuNhap.cshtml" />
     <Content Include="Areas\Admin\Views\QLNhapHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GiamGia\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GiamGia\SuaGiamGia.cshtml" />
+    <Content Include="Areas\Admin\Views\QLKhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QLKhachHang\SuaThanhVien.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMuc\SuaDanhMuc.cshtml" />
     <EntityDeploy Include="Models\QuanLyCaPhe.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QuanLyCaPhe.Designer.cs</LastGenOutput>
@@ -704,12 +710,7 @@
     <Content Include="Models\QuanLyCaPhe.edmx.diagram">
       <DependentUpon>QuanLyCaPhe.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\GiamGia\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\GiamGia\SuaGiamGia.cshtml" />
-    <Content Include="Areas\Admin\Views\QLKhachHang\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QLKhachHang\SuaThanhVien.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMuc\SuaDanhMuc.cshtml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

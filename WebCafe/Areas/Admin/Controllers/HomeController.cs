@@ -19,7 +19,10 @@ namespace WebCafe.Areas.Admin.Controllers
         [AdminAuthorize]
         public ActionResult Index()
         {
-            return View();
+            List<WebCafe.Models.DonDatHang> donDatHangs = db.DonDatHangs.OrderByDescending(row => row.NgayDat).Take(5).ToList();
+            List<WebCafe.Models.DonDatHang> donDatHangChuaXuLy = db.DonDatHangs.Where(row => row.TinhTrangGiao == "Đang xử lý đơn hàng").ToList();
+            ViewBag.ChuaXuLy = donDatHangChuaXuLy.Count();
+            return View(donDatHangs);
         }
 
         public ActionResult Login()
